@@ -1,0 +1,145 @@
+{
+	"info": {
+		"_postman_id": "354092e9-eac1-4ccf-9526-d8b7819db66b",
+		"name": "SchoolAPI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Register",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"ajeesh@gmail.com\",\r\n  \"password\": \"asdasd\",\r\n  \"lname\": \"Another\",\r\n  \"fname\": \"Guy\",\r\n  \"role\": \"admin\",\r\n  \"username\": \"ajeesh\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:3000/auth/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"auth",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Activate User",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"ajeesh@gmail.com\",\r\n  \"password\": \"asdasd\",\r\n  \"lname\": \"Another\",\r\n  \"fname\": \"Guy\",\r\n  \"role\": \"admin\",\r\n  \"username\": \"ajeesh\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:3000/auth/activate/4569416ae0dde54f3dff4feecd907c0d",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"auth",
+						"activate",
+						"4569416ae0dde54f3dff4feecd907c0d"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"ajeesh@gmail.com\",\r\n  \"password\": \"asdasd\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:3000/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Users",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFqZWVzaEBnbWFpbC5jb20iLCJyb2xlIjoiYWRtaW4iLCJ1c2VybmFtZSI6ImFqZWVzaCIsImlhdCI6MTU1MjExNzk2MSwiZXhwIjoxNTUyMTIxNTYxfQ.DTjdQa4o5WOKiSHwaQsNwpXx1Qe3iEiJQoisiiIFzKI",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"ajeesh@gmail.com\",\r\n  \"password\": \"asdasd\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:3000/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
