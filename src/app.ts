@@ -10,6 +10,7 @@ import * as mongoose from 'mongoose';
 import * as expressValidator from 'express-validator';
 import * as bluebird from 'bluebird';
 import * as expressJwt from 'express-jwt';
+import * as  cors from 'cors';
 import * as swaggerUI from 'swagger-ui-express';
 import * as swaggerDocument from '../swagger.json';
 import { AuthRouter, SwaggerAPIRouter, UserRouter } from './routes';
@@ -65,6 +66,16 @@ app.use(expressJwt({
     .unless({path: [/\/api-docs\//g, {url: '/', method: 'OPTIONS'}, /\/auth\//g]})
 );
 
+const options: cors.CorsOptions = {
+    allowedHeaders: ['Origin', 'X-Requested-With', 'Content-Type', 'Accept', 'X-Access-Token', 'Authorization'],
+    credentials: true,
+    methods: 'GET,HEAD,OPTIONS,PUT,PATCH,POST,DELETE',
+    origin: process.env.API_URL,
+    preflightContinue: false
+};
+
+app.use(cors(options));
+
 app.use(function (err, req, res, next) {
   if (err.name === 'UnauthorizedError') {
     res.status(401).send({
@@ -87,5 +98,7 @@ app.use((req: express.Request, resp: express.Response) => {
     msg: 'Not Found!'
   });
 });
+
+app.options('*', cors(options));
 
 module.exports = app;
